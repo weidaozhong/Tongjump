@@ -1,5 +1,5 @@
 // 毛球向上跳 — Service Worker
-const CACHE = 'maoqiu-jump-v16';
+const CACHE = 'maoqiu-jump-v18';
 const ASSETS = [
   './','./index.html','./audio.js','./themes.js','./game.js','./manifest.webmanifest',
   './icon-192.png','./icon-512.png','./icon-192-maskable.png','./icon-512-maskable.png',

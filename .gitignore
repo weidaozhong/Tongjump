@@ -24,3 +24,7 @@ push-to-github.sh
 推送到GitHub.md
 使用说明.md
 embed-snippet.html
+deploy.bat
+
+# wrangler 本地缓存（含账号信息，不公开）
+.wrangler/

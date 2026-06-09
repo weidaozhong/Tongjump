@@ -53,7 +53,7 @@ window.addEventListener('resize',layout); layout();
 var GRAV=0.32, JUMP=-11.6, SPRING_JUMP=-19, MOVE=0.9, MAXVX=7.2, FRICT=0.86;
 var state='menu';
 var player=null, platforms=[], items=[], score=0, scrolled=0, currentSkin='brown', frame=0;
-var tiltX=0, keyDir=0, touchDir=0, particles=[];
+var tiltX=0, keyDir=0, touchActive=false, touchAxis=0, touchStartX=0, particles=[];
 
 function randGap(){ return 62+Math.random()*46; }
 function makePlatform(y){
@@ -93,30 +93,29 @@ window.addEventListener('keyup',function(e){
   if((e.key==='ArrowLeft'||e.key==='a'||e.key==='A')&&keyDir===-1)keyDir=0;
   if((e.key==='ArrowRight'||e.key==='d'||e.key==='D')&&keyDir===1)keyDir=0;
 });
-function touchHandler(e){
-  if(state!=='play'){return;}
-  if(e.touches&&e.touches.length){
-    var r=cv.getBoundingClientRect();
-    touchDir=(e.touches[0].clientX-r.left)<r.width/2?-1:1;
-  }
-  e.preventDefault();
-}
-cv.addEventListener('touchstart',touchHandler,{passive:false});
-cv.addEventListener('touchmove',touchHandler,{passive:false});
-cv.addEventListener('touchend',function(){touchDir=0;},{passive:false});
-var mouseDown=false;
-cv.addEventListener('mousedown',function(e){mouseDown=true;setMouseDir(e);});
-cv.addEventListener('mousemove',function(e){if(mouseDown)setMouseDir(e);});
-window.addEventListener('mouseup',function(){mouseDown=false;touchDir=0;});
-function setMouseDir(e){if(state!=='play')return;var r=cv.getBoundingClientRect();touchDir=(e.clientX-r.left)<r.width/2?-1:1;}
+// 虚拟摇杆（相对滑动）：按下为原点，左右滑动越远越快，松手归零
+function jStart(x){ if(state!=='play')return; touchActive=true; touchStartX=x; touchAxis=0; }
+function jMove(x){ if(!touchActive)return; var r=cv.getBoundingClientRect(); var maxDrag=Math.max(40,r.width*0.16); touchAxis=Math.max(-1,Math.min(1,(x-touchStartX)/maxDrag)); }
+function jEnd(){ touchActive=false; touchAxis=0; }
+cv.addEventListener('touchstart',function(e){ if(e.touches&&e.touches.length)jStart(e.touches[0].clientX); e.preventDefault(); },{passive:false});
+cv.addEventListener('touchmove',function(e){ if(e.touches&&e.touches.length)jMove(e.touches[0].clientX); e.preventDefault(); },{passive:false});
+cv.addEventListener('touchend',function(e){ jEnd(); e.preventDefault(); },{passive:false});
+cv.addEventListener('touchcancel',function(){ jEnd(); },{passive:false});
+cv.addEventListener('mousedown',function(e){ jStart(e.clientX); });
+cv.addEventListener('mousemove',function(e){ jMove(e.clientX); });
+window.addEventListener('mouseup',function(){ jEnd(); });
 
 /* ---------- 更新 ---------- */
 function update(){
   frame++;
-  var dir=keyDir!==0?keyDir:touchDir!==0?touchDir:0;
-  if(dir!==0){ player.vx+=dir*MOVE; }
-  if(Math.abs(tiltX)>0.04){ player.vx+=tiltX*MOVE*1.15; }
-  if(dir===0 && Math.abs(tiltX)<=0.04){ player.vx*=FRICT; }
+  var ax=0;
+  if(keyDir!==0) ax=keyDir;
+  else if(touchActive) ax=touchAxis;
+  else if(Math.abs(tiltX)>0.04) ax=tiltX;
+  if(ax>1)ax=1; else if(ax<-1)ax=-1;
+  var targetVx=ax*MAXVX;
+  player.vx += (targetVx-player.vx)*0.18;
+  if(ax===0 && Math.abs(player.vx)<0.05) player.vx=0;
   player.vx=Math.max(-MAXVX,Math.min(MAXVX,player.vx));
   player.x+=player.vx;
   if(player.vx>0.3)player.face=1; else if(player.vx<-0.3)player.face=-1;
@@ -439,7 +438,7 @@ $('qqShareBtn').onclick=function(){
 
 var isTouch=('ontouchstart'in window)||navigator.maxTouchPoints>0;
 $('ctrlHint').textContent=isTouch
-  ? '手机：左右倾斜手机控制方向，或按住屏幕左 / 右半边'
+  ? '手机：按住屏幕左右滑动控制方向，滑得越远跑得越快'
   : '电脑：方向键 或 A / D 控制左右方向';
 
 /* ---------- 初始化 ---------- */
@@ -461,6 +460,18 @@ function primeAudioOnce(){
 window.addEventListener('pointerdown',primeAudioOnce,true);
 window.addEventListener('touchstart',primeAudioOnce,true);
 window.addEventListener('keydown',primeAudioOnce,true);
+
+// 鼠标光标：静止 1.5 秒自动隐藏、移动时再现；游戏进行中始终隐藏（本游戏不用鼠标）
+var _curTimer;
+function pokeCursor(){
+  if(state==='play'){ document.body.classList.add('nocursor'); return; }
+  document.body.classList.remove('nocursor');
+  clearTimeout(_curTimer);
+  _curTimer=setTimeout(function(){ document.body.classList.add('nocursor'); },1500);
+}
+window.addEventListener('mousemove',pokeCursor);
+window.addEventListener('mousedown',pokeCursor);
+_curTimer=setTimeout(function(){ document.body.classList.add('nocursor'); },1500);
 if('serviceWorker' in navigator && location.protocol.indexOf('http')===0){
   window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});
 }
