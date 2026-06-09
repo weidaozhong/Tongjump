@@ -1,0 +1,26 @@
+# ===== 系统垃圾 =====
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+.vscode/
+.idea/
+
+# ===== 私有资源：不公开到 GitHub（仅随直传部署上线） =====
+# 5 只毛球皮肤（你的原创美术）
+/assets/
+# App 图标（同样是毛球美术）
+/icon-192.png
+/icon-512.png
+/icon-192-maskable.png
+/icon-512-maskable.png
+# 专辑封面（你提供）
+/themes/covers/
+# 主题音乐（你提供，含版权）
+/themes/audio/
+
+# ===== 个人部署/说明文件：保留在本地，不进公开仓库 =====
+push-to-github.sh
+推送到GitHub.md
+使用说明.md
+embed-snippet.html
