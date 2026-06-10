@@ -13,6 +13,7 @@ window.THEMES = [
     synth: true,
     photo: false,
     dark: false,
+    scene: 'grid', plat: 'round', item: 'classic',
     pal: {
       bg:'#fff7ed',
       dimTop:'rgba(255,247,237,0)', dimBot:'rgba(255,247,237,0)',
@@ -37,6 +38,7 @@ window.THEMES = [
     audio: 'themes/audio/even_in_the_dark.mp3',
     photo: false,
     dark: true,
+    scene: 'embers', plat: 'slab', item: 'noir',
     pal: {
       bg:'#1b1714',
       dimTop:'rgba(255,255,255,0.02)', dimBot:'rgba(0,0,0,0.22)',
@@ -52,6 +54,31 @@ window.THEMES = [
       card:'#241f1c', cardBorder:'#3a322d',
       ctrlBg:'rgba(255,255,255,0.12)', ctrlBd:'rgba(255,255,255,0.34)',
       particleBreak:'#c0473b'
+    }
+  },
+  {
+    id: 'fearless',
+    name: 'Fearless',
+    artist: '福禄寿 FloruitShow',
+    cover: 'themes/covers/fearless.jpg',
+    audio: 'themes/audio/fearless.mp3',
+    photo: false,
+    dark: false,
+    scene: 'bubbles', plat: 'pill', item: 'pop',
+    pal: {
+      bg:'#f7f2ef',
+      dimTop:'rgba(247,242,239,0)', dimBot:'rgba(247,242,239,0)',
+      grid:'#ecdcd5',
+      pN:'#f3826b', pNe:'#cb5440',
+      pM:'#8ba2bf', pMe:'#566f8c',
+      pB:'#e0b48d', pBe:'#b07f53',
+      spring:'#ffcf5b', springEdge:'#c89a2e',
+      accent:'#ef5a4a', accentDark:'#cf3d33',
+      ink:'#2c2622', sub:'#8a7d74',
+      score:'#2c2622', scoreShadow:'rgba(0,0,0,0.32)',
+      card:'#ffffff', cardBorder:'#efddd5',
+      ctrlBg:'rgba(255,255,255,0.8)', ctrlBd:'#ecdcd3',
+      particleBreak:'#e0b48d'
     }
   }
 ];

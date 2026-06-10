@@ -10,8 +10,8 @@ function ensure(){
     var AC=window.AudioContext||window.webkitAudioContext;
     ctx=new AC();
     master=ctx.createGain(); master.gain.value=muted?0:1; master.connect(ctx.destination);
-    sfxGain=ctx.createGain(); sfxGain.gain.value=0.9; sfxGain.connect(master);
-    bgmGain=ctx.createGain(); bgmGain.gain.value=0.55; bgmGain.connect(master);
+    sfxGain=ctx.createGain(); sfxGain.gain.value=1.0; sfxGain.connect(master);
+    bgmGain=ctx.createGain(); bgmGain.gain.value=0.9; bgmGain.connect(master);
     // noise buffer for percussive sfx
     var n=ctx.sampleRate*0.4; noiseBuf=ctx.createBuffer(1,n,ctx.sampleRate);
     var ch=noiseBuf.getChannelData(0);
@@ -85,8 +85,8 @@ function hat(t){
   s.connect(f); f.connect(g); g.connect(bgmGain); s.start(t); s.stop(t+0.05);
 }
 function scheduleStep(i,t){
-  var m=MEL[i]; if(m) pluck(midi(m),t,0.18,'square',0.10);
-  var b=BASS[i]; if(b) pluck(midi(b),t,0.22,'triangle',0.13);
+  var m=MEL[i]; if(m) pluck(midi(m),t,0.18,'square',0.14);
+  var b=BASS[i]; if(b) pluck(midi(b),t,0.22,'triangle',0.17);
   if(i%2===0) hat(t);
 }
 function scheduler(){

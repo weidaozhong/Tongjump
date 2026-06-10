@@ -24,6 +24,10 @@
   body.nocursor, body.nocursor *{cursor:none !important;}
   .screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;color:var(--ink);padding:4% 6%;gap:12px;overflow-y:auto;}
+  #menu{justify-content:center;gap:18px;}
+  .m-head{display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .m-music{display:flex;flex-direction:column;align-items:center;gap:11px;width:100%;}
+  .m-foot{display:flex;flex-direction:column;align-items:center;gap:12px;}
   .hidden{display:none!important;}
   .logo{font-size:clamp(24px,6.4vw,38px);font-weight:800;letter-spacing:1px;line-height:1.1;
     text-shadow:0 2px 6px rgba(0,0,0,.45);}
@@ -90,6 +94,10 @@
     align-items:flex-start;padding:14px 16px;pointer-events:none;}
   #score{font-size:clamp(22px,6vw,30px);font-weight:800;color:var(--score,#3a3027);text-shadow:0 1px 4px rgba(0,0,0,.5);}
   .hudbtns{display:flex;gap:8px;pointer-events:auto;}
+  #hp{position:absolute;top:12px;left:50%;transform:translateX(-50%);display:flex;gap:4px;pointer-events:none;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45));}
+  #hp .heart{width:22px;height:22px;transition:transform .15s ease;}
+  #hp .heart svg{width:100%;height:100%;display:block;}
+  #hp .heart.lost{transform:scale(.8);opacity:.85;}
   .ctrl-btn{width:38px;height:38px;border-radius:50%;background:var(--ctrlBg);border:2px solid var(--ctrlBd);
     cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;color:var(--ink);}
   .ctrl-btn svg{width:20px;height:20px;}
@@ -149,6 +157,7 @@
 
   <div id="hud" class="hidden">
     <div id="score">0</div>
+    <div id="hp" aria-label="生命值"></div>
     <div class="hudbtns">
       <button id="muteBtn" class="ctrl-btn" aria-label="音乐开关"></button>
       <button id="pauseBtn" class="ctrl-btn" aria-label="暂停">
@@ -158,14 +167,20 @@
   </div>
 
   <div id="menu" class="screen">
-    <div class="logo">毛球向上跳<small>TONGLUV · JUMP</small></div>
-    <div class="sub">选一只毛球，挑一首歌，往上跳！</div>
+    <div class="m-head">
+      <div class="logo">毛球向上跳<small>TONGLUV · JUMP</small></div>
+      <div class="sub">选一只毛球，挑一首歌，往上跳！</div>
+    </div>
     <div class="swatches" id="swatches"></div>
-    <div class="seclbl">♪ 主题音乐 <span id="nowName" style="color:var(--ink);font-weight:700"></span></div>
-    <div class="themes-wrap" id="themes"></div>
-    <div class="mutebar"><button id="muteBtnMenu" class="ctrl-btn" style="width:32px;height:32px"></button> <span id="muteLbl">音乐开</span></div>
-    <button class="btn" id="startBtn">开 始</button>
-    <div class="hint" id="ctrlHint"></div>
+    <div class="m-music">
+      <div class="seclbl">♪ 主题音乐 <span id="nowName" style="color:var(--ink);font-weight:700"></span></div>
+      <div class="themes-wrap" id="themes"></div>
+      <div class="mutebar"><button id="muteBtnMenu" class="ctrl-btn" style="width:32px;height:32px"></button> <span id="muteLbl">音乐开</span></div>
+    </div>
+    <div class="m-foot">
+      <button class="btn" id="startBtn">开 始</button>
+      <div class="hint" id="ctrlHint"></div>
+    </div>
   </div>
 
   <div id="pause" class="screen modal hidden">
@@ -208,14 +223,13 @@
   </div>
   <div id="share" class="screen modal hidden">
     <div class="panel">
-      <div class="logo" style="font-size:clamp(20px,5.5vw,28px)">叫好友一起玩</div>
-      <img id="shareQR" class="qr" alt="扫码一起玩">
-      <div class="sub" id="shareTip">微信 / QQ 扫一扫，立即开玩</div>
+      <div class="logo" style="font-size:clamp(20px,5.5vw,28px)">分享给好友</div>
+      <div class="sub" id="shareTip">复制链接发给好友，或扫码在手机打开</div>
       <input id="shareUrl" class="urlbox" readonly>
-      <div class="row">
-        <button class="btn" id="copyLinkBtn">复制链接</button>
-        <button class="btn ghost" id="qqShareBtn">QQ 分享</button>
-      </div>
+      <button class="btn wechat" id="copyLinkBtn" style="width:100%;max-width:280px">复制链接</button>
+      <button class="btn ghost" id="qqShareBtn" style="width:100%;max-width:280px">QQ 分享</button>
+      <img id="shareQR" class="qr" alt="扫码打开" style="width:128px;height:128px">
+      <div class="sub" style="margin-top:-4px">扫码在手机上打开</div>
       <button class="btn ghost" id="shareCloseBtn" style="margin-top:2px">关闭</button>
     </div>
   </div>

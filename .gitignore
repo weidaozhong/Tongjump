@@ -28,3 +28,8 @@ deploy.bat
 
 # wrangler 本地缓存（含账号信息，不公开）
 .wrangler/
+
+# ===== 本地开发文件：不进公开仓库 =====
+preview.html
+*.bak
+*.bak2
