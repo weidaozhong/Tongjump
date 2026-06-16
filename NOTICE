@@ -8,3 +8,8 @@ Copyright 2026 weidaozhong
 这些素材不在本开源许可的授权范围内，相关权利由各自权利人保留；
 未经许可，请勿复制、再分发或作其他用途。
 如需运行完整版本，请使用你自己拥有相应权利的素材进行替换。
+
+第三方字体（随部署内嵌，非本仓库 Apache 代码的一部分）：
+- 龙藏体 Long Cang —— 用于《超度我》主题的背景经文（仅内嵌少数字形子集）。
+  版权 © The LongCang Project Authors（https://github.com/googlefonts/longcang），
+  依 SIL Open Font License 1.1 授权（https://scripts.sil.org/OFL）。可免费商用、嵌入与子集化。

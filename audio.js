@@ -51,7 +51,8 @@ var Sfx={
   spring:function(){ ensure(); tone(520,0.22,'square',0.16,1180); tone(780,0.20,'sine',0.08,1500); },
   brk:function(){ ensure(); noise(0.13,0.22,1500); tone(150,0.14,'square',0.12,80); },
   item:function(){ ensure(); var b=[660,880,1175]; for(var i=0;i<b.length;i++){ (function(f,d){ setTimeout(function(){ tone(f,0.12,'square',0.14); },d); })(b[i],i*55); } },
-  over:function(){ ensure(); tone(520,0.5,'triangle',0.2,150); noise(0.3,0.1,900); }
+  over:function(){ ensure(); tone(520,0.5,'triangle',0.2,150); noise(0.3,0.1,900); },
+  warn:function(){ ensure(); tone(1046,0.30,'sine',0.26,1318); tone(1568,0.22,'sine',0.12,2093); noise(0.03,0.06,5000); }   // 齿轮逼近预警: 清亮警示铃(高频, 手机喇叭也听得清)
 };
 
 /* ---- 合成轻快 BGM（C 大调五声，4 小节循环）---- */

@@ -1,10 +1,23 @@
 # Cloudflare Pages 响应头配置
-/sw.js
+# 外壳文件（HTML/核心JS/SW/manifest）：no-cache = 存但每次向服务器校验(etag)，
+# 既不会被旧缓存卡住、命中未变又走 304 省流量。必须覆盖「/」根路径——
+# 用户输入 tongjump.pages.dev 请求的是 /，光配 /index.html 不够（踩过的坑）。
+/
   Cache-Control: no-cache
 /index.html
   Cache-Control: no-cache
+/sw.js
+  Cache-Control: no-cache
+/game.js
+  Cache-Control: no-cache
+/themes.js
+  Cache-Control: no-cache
+/audio.js
+  Cache-Control: no-cache
 /manifest.webmanifest
   Content-Type: application/manifest+json; charset=utf-8
+  Cache-Control: no-cache
+# 静态资源：长缓存（少变、体积稳定）
 /assets/*
   Cache-Control: public, max-age=604800
 /themes/covers/*
