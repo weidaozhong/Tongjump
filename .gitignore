@@ -8,7 +8,8 @@ desktop.ini
 
 # ===== 私有资源：不公开到 GitHub（仅随直传部署上线） =====
 # 5 只毛球皮肤（你的原创美术）
-/assets/
+/assets/*
+!/assets/sutra.woff2
 # App 图标（同样是毛球美术）
 /icon-192.png
 /icon-512.png
