@@ -13,6 +13,7 @@ window.THEMES = [
     synth: true,
     photo: false,
     dark: false,
+    unlockScore:0, price:0,
     scene: 'grid', plat: 'round', item: 'classic',
     pal: {
       bg:'#fff7ed',
@@ -38,6 +39,7 @@ window.THEMES = [
     audio: 'themes/audio/even_in_the_dark.mp3?v=96',
     photo: false,
     dark: true,
+    unlockScore:400, price:200,
     scene: 'embers', plat: 'slab', item: 'noir',
     pal: {
       bg:'#1b1714',
@@ -64,7 +66,9 @@ window.THEMES = [
     audio: 'themes/audio/fearless.mp3?v=96',
     photo: false,
     dark: false,
-    scene: 'bubbles', plat: 'pill', item: 'pop',
+    unlockScore:1000, price:480,
+    scene: 'starfield', plat: 'pill', item: 'pop',
+    beat: { bpm:99.4, dur:305.6, env:[0,0,12,23,34,18,12,26,10,0,16,28,13,6,18,9,5,30,16,19,11,25,20,35,20,17,15,20,24,13,3,8,0,13,20,19,6,18,10,0,22,21,28,25,15,27,18,21,20,19,21,20,23,22,20,12,20,26,20,0,3,3,5,0,2,89,54,67,48,52,32,73,66,74,41,71,59,59,36,51,20,86,15,58,82,52,64,51,69,25,60,60,56,41,94,29,23,53,60,79,26,99,57,40,69,51,99,80,41,50,40,82,99,66,46,51,71,78,44,66,46,99,42,85,27,75,44,61,66,34,0,43,56,11,20,56,53,9,85,38,50,27,69,24,46,20,57,73,24,24,47,78,24,6,31,60,16,8,8,98,49,64,51,76,33,73,48,56,53,72,50,57,44,80,18,58,48,61,63,58,98,62,80,47,62,67,68,35,46,42,25,67,65,98,60,99,70,67,77,77,99,79,80,64,48,99,99,75,83,58,99,92,72,74,67,99,64,99,43,59,94,68,80,40,14,58,71,37,48,17,62,29,68,33,30,99,26,69,27,75,99,40,32,61,75,43,99,37,74,19,0,0,0,0,0,0] },
     pal: {
       bg:'#f7f2ef',
       dimTop:'rgba(247,242,239,0)', dimBot:'rgba(247,242,239,0)',
@@ -89,6 +93,7 @@ window.THEMES = [
     audio: 'themes/audio/how_remix.mp3?v=96',
     photo: false,
     dark: false,
+    unlockScore:2000, price:900,
     scene: 'waves', plat: 'wave', item: 'aqua',
     pal: {
       bg:'#cdd6ec',
@@ -114,6 +119,7 @@ window.THEMES = [
     audio: 'themes/audio/chaoduwo.mp3?v=96',
     photo: false,
     dark: true,
+    unlockScore:3300, price:1500,
     scene: 'souls', plat: 'tablet', item: 'relic',
     pal: {
       bg:'#103a44',
@@ -131,6 +137,58 @@ window.THEMES = [
       card:'#13313c', cardBorder:'#225a5e',
       ctrlBg:'rgba(180,240,235,0.12)', ctrlBd:'rgba(180,240,235,0.34)',
       particleBreak:'#5fe0cc'
+    }
+  },
+  {
+    id: 'ma',
+    name: '马',
+    artist: '福禄寿 FloruitShow',
+    cover: 'themes/covers/ma.jpg?v=1',
+    audio: 'themes/audio/ma.mp3?v=96',
+    photo: false,
+    dark: false,
+    unlockScore:5000, price:2250,
+    scene: 'meadow', plat: 'chalk', item: 'crayon',
+    pal: {
+      bg:'#c2e25a',
+      dimTop:'rgba(120,150,40,0)', dimBot:'rgba(110,130,40,0.10)',
+      grid:'#b6d850',
+      pN:'#f6eccf', pNe:'#bf9f5e',
+      pM:'#3bb39c', pMe:'#28796a',
+      pB:'#e3805f', pBe:'#b8543a',
+      spring:'#f4c24a', springEdge:'#c2922a',
+      accent:'#ef5f7c', accentDark:'#cd3f5d',
+      ink:'#3c3320', sub:'#6e6843',
+      score:'#3c3320', scoreShadow:'rgba(255,255,255,0.45)',
+      card:'#fffdf3', cardBorder:'#e6dcb4',
+      ctrlBg:'rgba(255,255,255,0.82)', ctrlBd:'#dccfa2',
+      particleBreak:'#e3805f'
+    }
+  },
+  {
+    id: 'huangtangyao',
+    name: '荒唐谣',
+    artist: 'DOUDOU',
+    cover: 'themes/covers/huangtangyao.jpg?v=1',
+    audio: 'themes/audio/huangtangyao.mp3?v=96',
+    photo: false,
+    dark: false,
+    unlockScore:7000, price:3150,
+    scene: 'songfeng', plat: 'brush', item: 'ink',
+    pal: {
+      bg:'#efe7d6',
+      dimTop:'rgba(239,231,214,0)', dimBot:'rgba(216,200,168,0.10)',
+      grid:'#e2d8c2',
+      pN:'#34302a', pNe:'#1b1915',
+      pM:'#6d8a86', pMe:'#46615d',
+      pB:'#a8714a', pBe:'#6f4526',
+      spring:'#2f9e6e', springEdge:'#1f7a52',
+      accent:'#cf4631', accentDark:'#9c2f1f',
+      ink:'#3a332a', sub:'#8a7d68',
+      score:'#3a332a', scoreShadow:'rgba(255,255,255,0.45)',
+      card:'#fbf5e8', cardBorder:'#e2d6bf',
+      ctrlBg:'rgba(255,250,240,0.82)', ctrlBd:'#e2d6bf',
+      particleBreak:'#a8714a'
     }
   }
 ];

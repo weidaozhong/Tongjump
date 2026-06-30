@@ -29,11 +29,11 @@
   .screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;color:var(--ink);padding:3% 5%;gap:9px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;}
   .screen::-webkit-scrollbar{display:none;width:0;height:0;}
-  #menu{justify-content:flex-start;overflow:hidden;}
+  #menu{justify-content:flex-start;overflow:hidden;padding-top:clamp(18px,4vh,46px);padding-bottom:clamp(14px,3.2vh,38px);}
   .m-inner{display:flex;flex-direction:column;align-items:center;gap:11px;width:100%;margin-top:auto;margin-bottom:auto;transform-origin:top center;}
   .m-head{display:flex;flex-direction:column;align-items:center;gap:6px;}
   .m-music{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;}
-  .m-foot{display:flex;flex-direction:column;align-items:center;gap:9px;}
+  .m-foot{display:flex;flex-direction:column;align-items:center;gap:15px;}
   .hidden{display:none!important;}
   .logo{font-size:clamp(22px,5.6vw,33px);font-weight:800;letter-spacing:1px;line-height:1.1;
     text-shadow:0 2px 6px rgba(0,0,0,.45);}
@@ -69,6 +69,60 @@
   .tcard.active{opacity:1;transform:translateY(-3px);}
   .tcard.active img{border-color:var(--accent);}
   .tcard.active .tnm{color:var(--ink);font-weight:700;}
+  .tcv{position:relative;display:inline-block;line-height:0;}
+  .tcard.locked img{filter:grayscale(.55) brightness(.78);}
+  .tcard .tlock{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4em;
+    border-radius:13px;line-height:1;font-size:clamp(10px,2.65vw,12.5px);
+    background:radial-gradient(115% 75% at 50% 16%,rgba(255,244,222,.13),transparent 58%),linear-gradient(180deg,rgba(46,32,18,.30),rgba(26,17,7,.56));}
+  .tcard .tlock .lkico{width:2.4em;height:2.4em;filter:drop-shadow(0 2px 3px rgba(0,0,0,.4));}
+  .tcard .tlock .lkshW{fill:none;stroke:#fff7ec;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;}
+  .tcard .tlock .lkbdW{fill:#fff7ec;stroke:#fff7ec;stroke-width:3;stroke-linejoin:round;}
+  .tcard .tlock .lkshO,.tcard .tlock .lksh{fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .tcard .tlock .lkshO{stroke:#5a3d1c;stroke-width:3.6;}
+  .tcard .tlock .lksh{stroke:#fbe7c0;stroke-width:1.9;}
+  .tcard .tlock .lkbd{fill:#fbe7c0;stroke:#5a3d1c;stroke-width:1.7;}
+  .tcard .tlock .lkkh{fill:#c79436;}
+  .tcard .tlock .lkreq{font-style:normal;font-weight:800;line-height:1;white-space:nowrap;font-size:.78em;letter-spacing:.02em;color:#5a3d1c;
+    background:#fbe7c0;padding:.26em .6em;border-radius:.85em;transform:rotate(-2.5deg);
+    box-shadow:0 0 0 1.3px #fbe7c0,0 0 0 2.7px rgba(90,61,28,.92),0 0 0 3.4px #fff7ec,0 2px 4px rgba(0,0,0,.34);}
+  .tcard .tlock .lkreq em{font-style:normal;font-weight:900;color:#bb5f17;font-size:1.16em;margin:0 .05em;}
+  @keyframes lkjiggle{0%,100%{transform:rotate(0)}22%{transform:rotate(-8deg)}45%{transform:rotate(6deg)}68%{transform:rotate(-4deg)}85%{transform:rotate(2deg)}}
+  @media (hover:hover){.tcard.locked:hover .lkico{animation:lkjiggle .55s ease}.tcard.locked:hover .lkreq{transform:rotate(-2.5deg) scale(1.06)}}
+  #shop{justify-content:flex-start;overflow:hidden;padding-top:clamp(16px,3.6vh,40px);padding-bottom:clamp(14px,3vh,34px);}
+  .shop-inner{--arrcol:28px;width:100%;max-width:454px;margin:auto 0;display:flex;flex-direction:column;gap:13px;transform-origin:top center;}
+  .shop-head{position:relative;display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin-bottom:1px;}
+  .shop-coins{position:absolute;left:0;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:5px;font-size:15px;font-weight:800;color:var(--ink);background:var(--card);border:1px solid var(--cardBorder);border-radius:999px;padding:5px 12px 5px 9px;box-shadow:0 2px 6px rgba(0,0,0,.12);}
+  .shop-title{margin:0;text-align:center;font-size:clamp(19px,5.2vw,24px);font-weight:800;letter-spacing:2px;color:var(--ink);line-height:1.12;text-shadow:0 2px 6px rgba(0,0,0,.4);}
+  .shop-title small{display:block;font-size:.4em;color:var(--sub);font-weight:700;letter-spacing:3px;margin-top:8px;}
+  #shopBack{padding:7px 15px;font-size:14px;border-radius:999px;box-shadow:0 4px 0 var(--cardBorder),0 5px 10px rgba(0,0,0,.16);}
+  .shop-head-r{position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:10px;}
+  #shopBack:active{transform:scale(.96);box-shadow:0 2px 0 var(--cardBorder);}
+  .shop-tip{font-size:11.5px;color:var(--sub);text-align:center;line-height:1.5;margin:-3px 0 3px;padding:0 8px;}
+  #shopList{display:flex;flex-direction:column;gap:11px;width:100%;}
+  .shop-row{display:flex;align-items:center;gap:12px;width:100%;padding:11px 13px;border-radius:16px;text-align:left;
+    background:var(--card);border:1px solid var(--cardBorder);box-shadow:0 4px 13px rgba(0,0,0,.10);transition:transform .12s,box-shadow .12s;}
+  .shop-row.owned{box-shadow:0 4px 13px rgba(0,0,0,.10),inset 4px 0 0 var(--accent);}
+  .shop-row.focus{outline:2px solid var(--accent);outline-offset:2px;}
+  .shop-row.sel{cursor:pointer;border-color:var(--accent);box-shadow:0 0 0 2px var(--accent),0 6px 18px rgba(0,0,0,.16),inset 4px 0 0 var(--accent);transform:translateY(-1px);}
+  .shop-row.owned{cursor:pointer;}
+  .shop-cv{width:54px;height:54px;flex:0 0 auto;border-radius:12px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 7px rgba(0,0,0,.26);}
+  .shop-info{flex:1;min-width:0;}
+  .shop-row.consum{width:fit-content;max-width:100%;}   /* 消耗品: 卡片宽度收到内容, 不与主题卡同宽 */
+  .shop-row.consum .shop-info{flex:0 1 auto;}   /* 文案自然宽, 兑换按钮紧跟其后, 去掉中间大空白 */
+  .shop-pager{display:flex;align-items:center;gap:6px;width:100%;}
+  .shop-pager>#shopList{flex:1 1 auto;width:auto;min-width:0;}
+  #shopConsumables{display:flex;flex-direction:column;align-items:flex-end;gap:16px;margin-bottom:16px;padding-right:var(--arrcol);}   /* 消耗品: 右对齐(内缩与主题卡同宽) + 卡片间距拉开 */
+  #shopConsumables.noarr{padding-right:0;}
+  .shop-nm{font-size:14.5px;font-weight:800;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .shop-st{font-size:11.5px;color:var(--sub);margin-top:3px;}
+  .shop-row.owned .shop-st{color:var(--accent);font-weight:700;}
+  .shop-buy{flex:0 0 auto;font-family:inherit;font-weight:800;font-size:13.5px;cursor:pointer;border:none;border-radius:999px;padding:9px 17px;
+    color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(0,0,0,.12)),var(--btn);box-shadow:0 3px 0 var(--btnDark),0 5px 11px rgba(0,0,0,.22);transition:transform .1s,box-shadow .1s;}
+  .shop-buy:active{transform:translateY(2px);box-shadow:0 1px 0 var(--btnDark);}
+  .shop-buy[disabled]{opacity:.42;cursor:default;box-shadow:0 3px 0 var(--btnDark);}
+  .shop-row.owned .shop-buy{background:var(--card);color:var(--btn);box-shadow:0 3px 0 var(--cardBorder);}
+  .shop-foot{font-size:11px;color:var(--sub);text-align:center;letter-spacing:2px;opacity:.72;margin-top:6px;}
+  @media (hover:hover){.shop-row:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.14);}}
 
   .btn{font-family:inherit;font-weight:800;border:none;cursor:pointer;color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.04) 45%,rgba(0,0,0,.14) 100%),var(--btn);
     padding:13px 32px;border-radius:30px;font-size:clamp(16px,4.4vw,19px);
@@ -112,11 +166,15 @@
   #playhint.show{opacity:1;}
 
   /* HUD */
-  #hud{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;
-    align-items:flex-start;padding:14px 16px;pointer-events:none;}
-  #score{font-size:clamp(22px,6vw,30px);font-weight:800;color:var(--score,#3a3027);text-shadow:0 1px 4px rgba(0,0,0,.5);}
-  .hudbtns{display:flex;gap:8px;pointer-events:auto;}
-  #hp{position:absolute;top:12px;left:50%;transform:translateX(-50%);display:flex;gap:4px;pointer-events:none;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45));}
+  #hud{position:absolute;top:-5px;left:0;right:0;display:flex;justify-content:space-between;
+    align-items:center;padding:14px 16px;pointer-events:none;}
+  #score{font-size:clamp(22px,6vw,30px);font-weight:800;color:var(--score,#3a3027);text-shadow:0 1px 4px rgba(0,0,0,.5);line-height:1.05;}
+  #runCoinHud{position:absolute;top:53px;left:16px;display:flex;align-items:center;gap:3px;font-size:14px;font-weight:800;color:var(--ink,#3a3027);background:var(--card,#fff);border:1px solid var(--cardBorder,#e7dccb);border-radius:999px;padding:3px 9px;box-shadow:0 2px 6px rgba(0,0,0,.14);pointer-events:none;white-space:nowrap;}
+  .m-top{position:absolute;top:10px;right:14px;z-index:4;display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+  #coinHud{z-index:4;font-weight:800;font-size:15px;color:var(--ink,#3a3027);background:var(--card,#fff);border:1px solid var(--cardBorder,#e7dccb);border-radius:999px;padding:3px 11px;box-shadow:0 2px 8px rgba(0,0,0,.12);pointer-events:none;}
+  .hudbtns{display:flex;align-items:center;gap:8px;pointer-events:auto;}
+  .coinico{width:1.15em;height:1.15em;display:inline-block;vertical-align:-.22em;flex:0 0 auto;}
+  #hp{position:absolute;top:22px;left:50%;transform:translateX(-50%);display:flex;gap:4px;pointer-events:none;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45));}
   #hp .heart{width:22px;height:22px;transition:transform .15s ease;}
   #hp .heart svg{width:100%;height:100%;display:block;}
   #hp .heart.lost{transform:scale(.8);opacity:.85;}
@@ -197,7 +255,7 @@
     .m-inner{gap:clamp(16px,2.5vh,32px);}
     .m-head{gap:clamp(6px,1vh,12px);}
     .m-music{gap:clamp(8px,1.4vh,16px);}
-    .m-foot{gap:clamp(10px,1.5vh,18px);}
+    .m-foot{gap:clamp(15px,2.4vh,26px);}
     .logo{font-size:clamp(30px,4.8vh,46px);}
     .logo small{font-size:.4em;letter-spacing:5px;margin-top:9px;}
     .sub{font-size:clamp(13px,1.9vh,17px);}
@@ -208,9 +266,11 @@
     .seclbl{font-size:clamp(12px,1.8vh,15px);}
     .themes-grid{gap:clamp(12px,1.7vh,20px) clamp(8px,1.2vh,16px);max-width:clamp(330px,52vh,560px);padding-bottom:8px;}
     .tparrow{width:clamp(26px,3.2vh,40px);height:clamp(58px,9vh,104px);font-size:clamp(22px,2.8vh,30px);border-radius:12px;}
+    .shop-inner{--arrcol:calc(clamp(26px,3.2vh,40px) + 6px);}
     .tcard{width:clamp(72px,9.4vh,98px);}
     .tcard img{width:clamp(64px,8.4vh,88px);height:clamp(64px,8.4vh,88px);border-radius:17px;}
     .tcard .tnm{font-size:clamp(10px,1.4vh,12px);width:clamp(70px,9.4vh,100px);}
+    .tcard .tlock{font-size:clamp(11.5px,1.55vh,14.5px);}
     .howto{max-width:clamp(340px,42vh,440px);gap:clamp(9px,1.4vh,14px);
       padding:clamp(13px,1.9vh,20px) clamp(16px,2.2vh,26px);border-radius:18px;}
     .howto .tag{width:clamp(50px,6vh,62px);font-size:clamp(11px,1.5vh,13px);}
@@ -226,6 +286,8 @@
 
   <div id="hud" class="hidden">
     <div id="score">0</div>
+    <div id="runCoinHud"><svg class="coinico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.4" fill="#ffd95b" stroke="#b9851f" stroke-width="2"/><circle cx="12" cy="12" r="6.4" fill="none" stroke="#b9851f" stroke-opacity=".5" stroke-width="1.1"/><path d="M12 7.3L13.2 10.4L16.5 10.5L13.9 12.6L14.8 15.8L12 14L9.2 15.8L10.1 12.6L7.5 10.5L10.8 10.4Z" fill="#a9760f"/><circle cx="8.7" cy="8.4" r="1.9" fill="#fff" fill-opacity=".72"/></svg> <span id="runCoinNum">0</span></div>
+    <div id="frenzyBar" style="display:none;position:absolute;left:16px;top:92px;width:120px;height:6px;border-radius:3px;background:rgba(0,0,0,.16);overflow:hidden;pointer-events:none"><div id="frenzyFill" style="height:100%;width:100%;background:#5a8bff"></div></div>
     <div id="hp" aria-label="生命值"></div>
     <div class="hudbtns">
       <button id="muteBtn" class="ctrl-btn" aria-label="音乐开关"></button>
@@ -236,7 +298,7 @@
   </div>
 
 
-  <div id="menu" class="screen"><div class="m-inner">
+  <div id="menu" class="screen"><div class="m-top"><div id="coinHud"><svg class="coinico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.4" fill="#ffd95b" stroke="#b9851f" stroke-width="2"/><circle cx="12" cy="12" r="6.4" fill="none" stroke="#b9851f" stroke-opacity=".5" stroke-width="1.1"/><path d="M12 7.3L13.2 10.4L16.5 10.5L13.9 12.6L14.8 15.8L12 14L9.2 15.8L10.1 12.6L7.5 10.5L10.8 10.4Z" fill="#a9760f"/><circle cx="8.7" cy="8.4" r="1.9" fill="#fff" fill-opacity=".72"/></svg> <span id="coinNum">0</span></div><button id="menuMusicBtn" class="ctrl-btn" aria-label="音乐开关"></button></div><div class="m-inner">
     <div class="m-head">
       <div class="logo">毛球向上跳<small>TONGLUV · JUMP</small></div>
       <div class="sub">选一只毛球，挑一首歌，往上跳！</div>
@@ -253,11 +315,26 @@
     <div class="howto" id="ctrlHint"></div>
     <div class="m-foot">
       <button class="btn" id="startBtn">开 始</button>
+      <button class="btn ghost" id="shopBtn"><svg class="coinico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.4" fill="#ffd95b" stroke="#b9851f" stroke-width="2"/><circle cx="12" cy="12" r="6.4" fill="none" stroke="#b9851f" stroke-opacity=".5" stroke-width="1.1"/><path d="M12 7.3L13.2 10.4L16.5 10.5L13.9 12.6L14.8 15.8L12 14L9.2 15.8L10.1 12.6L7.5 10.5L10.8 10.4Z" fill="#a9760f"/><circle cx="8.7" cy="8.4" r="1.9" fill="#fff" fill-opacity=".72"/></svg> 主题商店</button>
       <div class="m-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.5 3.9 5.7 3.9 9s-1.3 6.5-3.9 9c-2.6-2.5-3.9-5.7-3.9-9S9.4 5.5 12 3z"/></svg>tongjump.pages.dev</div>
     </div>
     </div>
   </div>
 
+  <div id="shop" class="screen hidden">
+    <div class="shop-inner">
+      <div class="shop-head"><span class="shop-coins"><svg class="coinico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.4" fill="#ffd95b" stroke="#b9851f" stroke-width="2"/><circle cx="12" cy="12" r="6.4" fill="none" stroke="#b9851f" stroke-opacity=".5" stroke-width="1.1"/><path d="M12 7.3L13.2 10.4L16.5 10.5L13.9 12.6L14.8 15.8L12 14L9.2 15.8L10.1 12.6L7.5 10.5L10.8 10.4Z" fill="#a9760f"/><circle cx="8.7" cy="8.4" r="1.9" fill="#fff" fill-opacity=".72"/></svg> <span id="shopCoins">0</span></span><div class="shop-title">主题商店<small>THEME SHOP</small></div><span class="shop-head-r"><button id="shopMusicBtn" class="ctrl-btn" aria-label="音乐开关"></button><button class="btn ghost" id="shopBack">返回</button></span></div>
+      <div class="shop-tip"><svg class="coinico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.4" fill="#ffd95b" stroke="#b9851f" stroke-width="2"/><circle cx="12" cy="12" r="6.4" fill="none" stroke="#b9851f" stroke-opacity=".5" stroke-width="1.1"/><path d="M12 7.3L13.2 10.4L16.5 10.5L13.9 12.6L14.8 15.8L12 14L9.2 15.8L10.1 12.6L7.5 10.5L10.8 10.4Z" fill="#a9760f"/><circle cx="8.7" cy="8.4" r="1.9" fill="#fff" fill-opacity=".72"/></svg> 边玩边捡金币，每局还按分数加成；攒够或达分即可解锁主题</div>
+      <div id="shopConsumables"></div>
+      <div class="shop-pager">
+        <button class="tparrow" id="shopPrev" type="button" aria-label="上一组" style="display:none">‹</button>
+        <div id="shopList"></div>
+        <button class="tparrow" id="shopNext" type="button" aria-label="下一组" style="display:none">›</button>
+      </div>
+      <div id="shopPageInd" style="display:none;text-align:center;font-size:12px;color:var(--sub,#8a7c66);margin-top:6px">第 1 / 1 组</div>
+      <div class="shop-foot">更多主题陆续上线</div>
+    </div>
+  </div>
   <div id="pause" class="screen modal hidden">
     <div class="panel">
       <div class="logo" style="font-size:clamp(22px,6vw,32px)">暂停中</div>
@@ -322,6 +399,7 @@
 </div></div>
 <script src="audio.js"></script>
 <script src="themes.js"></script>
+<script src="logic.js"></script>
 <script src="game.js"></script>
 </body>
 </html>
